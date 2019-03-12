@@ -1,0 +1,43 @@
+//how to take data from input fields and pass it to services and operate the data
+
+
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<head>
+    <div ng-app="myapp" ng-controller="ctrl">
+    <input type="text" name="abc" ng-model="b" style="display: block; width: 200px">
+    <button ng-click="f1()">Click</button>
+    <p>{{result}}</p>
+	</div>
+    </head>
+
+	<body>
+	<script>
+    
+    var app= angular.module('myapp',[]);
+
+    app.service('serv1', function(){
+  
+     this.f2=function(b){
+      
+      return parseInt(b+10);
+
+     };
+    });
+
+    app.controller('ctrl',function($scope, serv1 ){
+
+    $scope.f1=function()
+    {
+        //alert($scope.b);
+        $scope.res=serv1.f2($scope.b);
+        alert($scope.res);
+    }
+
+    });
+    </script>
+	</body>
+     
+</html>
